@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="collectionofwebviews.HomeView"
+             Title="HomeView"
+             xmlns:viewmodels="clr-namespace:collectionofwebviews.viewmodel"
+             x:DataType="viewmodels:HomeViewModel"
+             xmlns:listDataType="clr-namespace:collectionofwebviews.model"
+             BackgroundColor="White">
+   
+    
+    <ScrollView>
+
+
+        <CollectionView ItemsSource="{Binding WebsiteList}"
+                        SelectedItem="{Binding SelectedWebsite}"
+                        SelectionMode="Single"
+                        SelectionChangedCommand="{Binding SelectionChangedCommand}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate   x:DataType="listDataType:ListDataModel" >
+                    <Grid Padding="10">                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Frame Grid.RowSpan="2" CornerRadius="20" Padding="0" Margin="0,0,10,0">
+                          <WebView 
+                           Source="{Binding WebsiteUR}"
+                           HeightRequest="200"
+                           WidthRequest="200" />                    
+                        </Frame>
+
+                        <Label Grid.Column="1" 
+                       Text="{Binding Title}"
+                       FontAttributes="Bold" />
+                        
+                        <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Text="{Binding WebsiteDesc}"
+                       FontAttributes="Italic"
+                        MaxLines="4" />
+
+
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </ScrollView>
+</ContentPage>

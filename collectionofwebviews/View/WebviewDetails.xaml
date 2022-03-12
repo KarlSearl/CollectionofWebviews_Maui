@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="collectionofwebviews.WebviewDetails"
+             Title="WebviewDetails"
+             BackgroundColor="White">
+    <Grid>
+
+        <WebView   Source="{Binding Selected.WebsiteUR}" />
+
+        <Button Margin="0,0,10,50" Text="Back to list" HorizontalOptions="End" 
+                VerticalOptions="End" BackgroundColor="LightGreen"
+                Command="{Binding GoBackCommand}" />
+
+    </Grid>
+</ContentPage>
